@@ -55,15 +55,13 @@ int main(int argc, char* argv[]) {
     length = header->caplen; 
     eth_h = (ether_header*)packet;
     ip* ip_h =(ip*)(packet + sizeof(ether_header));
-    //packet = packet+sizeof(ether_header);
-    //ip* ip_h = (ip*)packet;
     tcphdr* tcp_h = (tcphdr*)((u_char*)ip_h + ip_h->ip_hl*4);
-    //tcphdr* tcp_h = (tcphdr*)(packet+ip_h->ip_hl*4);
+    
     packet +=sizeof(ether_header)+sizeof(ip)+sizeof(tcphdr);
     printf("++++++++++++++++++++++%d++++++++++++++++++++++++",sizeof(packet));
     if (res == 0) continue;
     if (res == -1 || res == -2) break;
-    //printf("%d bytes captured\n", header->caplen);
+    
     
     print_eth(eth_h);
 
